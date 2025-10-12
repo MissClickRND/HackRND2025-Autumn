@@ -1,17 +1,20 @@
 import { Button, Flex, Input, PasswordInput, Stack, Text } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import axios from "axios";
 import { NavLink } from "react-router-dom";
+import { API } from "../../../app/helpers";
+import { notifications } from "@mantine/notifications";
 
 export default function Register() {
   const form = useForm({
     initialValues: {
-      login: "",
+      email: "",
       password: "",
       repeatPassword: "",
     },
     validate: {
-      login: (value: string) =>
-        value.length >= 3 ? null : "Логин слишком короткий",
+      email: (value: string) =>
+        value.length >= 3 ? null : "Почта слишком короткая",
       password: (value: string) =>
         value.length >= 5 ? null : "Пароль слишком короткий",
       repeatPassword: (value: string, values) =>
@@ -20,7 +23,37 @@ export default function Register() {
   });
 
   const handleSubmit = () => {
-    console.log(form.values);
+    axios
+      .post(
+        `${API}/register`,
+        {
+          email: form.values.email,
+          password: form.values.password,
+        },
+        {
+          headers: {
+            "x-client-type": "Web",
+          },
+        }
+      )
+      .then(() =>
+        notifications.show({
+          title: "Успешно",
+          message: "Вы зарегистрировались",
+          position: "bottom-right",
+          color: "green",
+          autoClose: 3000,
+        })
+      )
+      .catch((err) =>
+        notifications.show({
+          title: "Ошибка",
+          message: err.response.data.message,
+          position: "bottom-right",
+          color: "red",
+          autoClose: 3000,
+        })
+      );
   };
 
   return (
@@ -31,12 +64,12 @@ export default function Register() {
 
       <form onSubmit={form.onSubmit(handleSubmit)}>
         <Stack>
-          <Input.Wrapper label="Логин" error={form.errors.login}>
+          <Input.Wrapper label="Email" error={form.errors.email}>
             <Input
               w={400}
               size="md"
-              placeholder="Введите ваш логин"
-              {...form.getInputProps("login")}
+              placeholder="Введите вашу почту"
+              {...form.getInputProps("email")}
             />
           </Input.Wrapper>
           <Input.Wrapper label="Пароль">

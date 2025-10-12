@@ -1,22 +1,55 @@
 import { Button, Flex, Input, PasswordInput, Stack, Text } from "@mantine/core";
 import { useForm } from "@mantine/form";
+import axios from "axios";
 import { NavLink } from "react-router-dom";
+import { API } from "../../../app/helpers";
+import { notifications } from "@mantine/notifications";
 
-export default function Login() {
+export default function email() {
   const form = useForm({
     initialValues: {
-      login: "",
+      email: "",
       password: "",
     },
     validate: {
-      login: (value) => (value.length >= 3 ? null : "Логин слишком короткий"),
+      email: (value) => (value.length >= 3 ? null : "Логин слишком короткий"),
       password: (value) =>
         value.length >= 5 ? null : "Пароль слишком короткий",
     },
   });
 
   const handleSubmit = () => {
-    console.log(form.values);
+    axios
+      .post(
+        `${API}/login`,
+        {
+          email: form.values.email,
+          password: form.values.password,
+        },
+        {
+          headers: {
+            "x-client-type": "Web",
+          },
+        }
+      )
+      .then(() =>
+        notifications.show({
+          title: "Успешно",
+          message: "Вы вошли",
+          position: "bottom-right",
+          color: "green",
+          autoClose: 3000,
+        })
+      )
+      .catch((err) =>
+        notifications.show({
+          title: "Ошибка",
+          message: err.response.data.message,
+          position: "bottom-right",
+          color: "red",
+          autoClose: 3000,
+        })
+      );
   };
 
   return (
@@ -27,12 +60,12 @@ export default function Login() {
 
       <form onSubmit={form.onSubmit(handleSubmit)}>
         <Stack>
-          <Input.Wrapper label="Логин" error={form.errors.login}>
+          <Input.Wrapper label="Email" error={form.errors.email}>
             <Input
               w={400}
               size="md"
-              placeholder="Введите ваш логин"
-              {...form.getInputProps("login")}
+              placeholder="Введите вашу почту"
+              {...form.getInputProps("email")}
             />
           </Input.Wrapper>
           <Input.Wrapper label="Пароль">
