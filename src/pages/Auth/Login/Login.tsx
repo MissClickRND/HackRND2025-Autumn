@@ -27,20 +27,22 @@ export default function email() {
           password: form.values.password,
         },
         {
+          withCredentials: true,
           headers: {
             "x-client-type": "Web",
           },
         }
       )
-      .then(() =>
+      .then((res) => {
         notifications.show({
           title: "Успешно",
-          message: "Вы вошли",
+          message: res.data.message,
           position: "bottom-right",
           color: "green",
           autoClose: 3000,
-        })
-      )
+        });
+        window.location.href = "/";
+      })
       .catch((err) =>
         notifications.show({
           title: "Ошибка",

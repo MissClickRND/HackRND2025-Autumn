@@ -31,20 +31,22 @@ export default function Register() {
           password: form.values.password,
         },
         {
+          withCredentials: true,
           headers: {
             "x-client-type": "Web",
           },
         }
       )
-      .then(() =>
+      .then((res) => {
         notifications.show({
           title: "Успешно",
-          message: "Вы зарегистрировались",
+          message: res.data.message,
           position: "bottom-right",
           color: "green",
           autoClose: 3000,
-        })
-      )
+        });
+        window.location.href = "/";
+      })
       .catch((err) =>
         notifications.show({
           title: "Ошибка",
