@@ -1,8 +1,9 @@
-import { Box, Button, Center, Stack, Text } from "@mantine/core";
+import { Box, Button, Stack, Text } from "@mantine/core";
 import { IconHome } from "@tabler/icons-react";
 import apiClient from "../../app/api/axiosInstance";
 import { notifications } from "@mantine/notifications";
-import { API } from "../../app/helpers";
+
+const API = import.meta.env.VITE_API;
 
 export default function Main() {
   const test = () => {

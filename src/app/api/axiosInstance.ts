@@ -1,5 +1,5 @@
 import axios, { AxiosError, InternalAxiosRequestConfig } from "axios";
-import { API } from "../helpers";
+const API = import.meta.env.VITE_API;
 
 //Используется теперь с каждым запросом где нужна проверка на 401
 const apiClient = axios.create({

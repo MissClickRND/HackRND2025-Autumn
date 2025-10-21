@@ -1,9 +1,9 @@
 import { Button, Flex } from "@mantine/core";
 import { NavLink } from "react-router-dom";
 import apiClient from "../../../app/api/axiosInstance";
-import { API } from "../../../app/helpers";
 import { notifications } from "@mantine/notifications";
 
+const API = import.meta.env.VITE_API;
 export default function NavLayout() {
   const links = [
     { name: "Главная", link: "/" },

@@ -2,9 +2,9 @@ import { Button, Flex, Input, PasswordInput, Stack, Text } from "@mantine/core";
 import { useForm } from "@mantine/form";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
-import { API } from "../../../app/helpers";
 import { notifications } from "@mantine/notifications";
 
+const API = import.meta.env.VITE_API;
 export default function Register() {
   const form = useForm({
     initialValues: {
