@@ -60,9 +60,10 @@ export default function Register() {
 
   return (
     <Stack>
-      <Text ta="center" fz={32} fw={500}>
+      <Text fz={24} fw={700}>
         Регистрация
       </Text>
+      <Text fz={13} c="var(">Зарегистрируйтесь, чтобы продолжить</Text>
 
       <form onSubmit={form.onSubmit(handleSubmit)}>
         <Stack>
@@ -90,11 +91,11 @@ export default function Register() {
               {...form.getInputProps("repeatPassword")}
             />
           </Input.Wrapper>
-          <Button type="submit" fullWidth size="md">
+          <Button type="submit" fullWidth size="md" color="var(--main-color)">
             Зарегистрироваться
           </Button>
           <Flex gap={2} justify="center" align="center">
-            <Text>Есть аккаунт? </Text>
+            <Text>Уже есть аккаунт?</Text>
             <NavLink to="/auth/login">
               <Text c="var(--main-color)" fw={600}>
                 Войти
