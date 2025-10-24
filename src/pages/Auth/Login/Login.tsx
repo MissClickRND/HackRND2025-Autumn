@@ -1,4 +1,14 @@
-import { Button, Flex, Input, PasswordInput, Stack, Text } from "@mantine/core";
+import {
+  Box,
+  Button,
+  Flex,
+  Input,
+  PasswordInput,
+  Stack,
+  Text,
+  Image,
+  Center,
+} from "@mantine/core";
 import { useForm } from "@mantine/form";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
@@ -56,9 +66,18 @@ export default function email() {
 
   return (
     <Stack>
-      <Text ta="center" fz={32} fw={500}>
-        Авторизация
-      </Text>
+      <Center>
+        <Image src="/icons/MainLogo.svg" mb={80} w={300} />
+      </Center>
+
+      <Box>
+        <Text fz={24} fw={700}>
+          Вход в аккаунт
+        </Text>
+        <Text fz={13} c="var(--subtitle)">
+          Авторизуйтесь, чтобы продолжить
+        </Text>
+      </Box>
 
       <form onSubmit={form.onSubmit(handleSubmit)}>
         <Stack>
@@ -78,7 +97,7 @@ export default function email() {
               {...form.getInputProps("password")}
             />
           </Input.Wrapper>
-          <Button type="submit" fullWidth size="md">
+          <Button type="submit" fullWidth size="md" color="var(--main-color)">
             Войти
           </Button>
           <Flex gap={2} justify="center" align="center">

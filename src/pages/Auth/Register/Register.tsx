@@ -1,4 +1,14 @@
-import { Button, Flex, Input, PasswordInput, Stack, Text } from "@mantine/core";
+import {
+  Box,
+  Button,
+  Center,
+  Flex,
+  Input,
+  PasswordInput,
+  Stack,
+  Text,
+  Image,
+} from "@mantine/core";
 import { useForm } from "@mantine/form";
 import axios from "axios";
 import { NavLink } from "react-router-dom";
@@ -8,11 +18,14 @@ const API = import.meta.env.VITE_API;
 export default function Register() {
   const form = useForm({
     initialValues: {
+      name: "",
       email: "",
       password: "",
       repeatPassword: "",
     },
     validate: {
+      name: (value: string) =>
+        value.length >= 3 ? null : "Имя слишком короткое",
       email: (value: string) =>
         value.length >= 3 ? null : "Почта слишком короткая",
       password: (value: string) =>
@@ -27,6 +40,7 @@ export default function Register() {
       .post(
         `${API}/register`,
         {
+          name: form.values.name,
           email: form.values.email,
           password: form.values.password,
         },
@@ -60,13 +74,29 @@ export default function Register() {
 
   return (
     <Stack>
-      <Text fz={24} fw={700}>
-        Регистрация
-      </Text>
-      <Text fz={13} c="var(">Зарегистрируйтесь, чтобы продолжить</Text>
+      <Center>
+        <Image src="/icons/MainLogo.svg" mb={30} w={300} />
+      </Center>
+
+      <Box>
+        <Text fz={24} fw={700}>
+          Регистрация
+        </Text>
+        <Text fz={13} c="var(--subtitle)">
+          Зарегистрируйтесь, чтобы продолжить
+        </Text>
+      </Box>
 
       <form onSubmit={form.onSubmit(handleSubmit)}>
         <Stack>
+          <Input.Wrapper label="ФИО" error={form.errors.name}>
+            <Input
+              w={400}
+              size="md"
+              placeholder="Введите ваше ФИО"
+              {...form.getInputProps("name")}
+            />
+          </Input.Wrapper>
           <Input.Wrapper label="Email" error={form.errors.email}>
             <Input
               w={400}

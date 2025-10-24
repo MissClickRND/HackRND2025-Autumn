@@ -6,11 +6,16 @@ import About from "../../pages/About/About.page";
 import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
 import Login from "../../pages/Auth/Login/Login";
 import Register from "../../pages/Auth/Register/Register";
+import Auth from "./Auth";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <MainLayout />,
+    element: (
+      <Auth>
+        <MainLayout />
+      </Auth>
+    ),
     children: [
       {
         path: "/",
