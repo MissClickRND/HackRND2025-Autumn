@@ -35,6 +35,7 @@ const NavButton: FC<IProps> = ({ to, title, icon }) => {
           left: 80,
           borderRadius: ".5rem",
           pointerEvents: "none",
+          zIndex: 100,
         }}
         py={7}
         px={14}

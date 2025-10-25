@@ -61,8 +61,13 @@ export default function UsersSections() {
         data={dataNonVerify}
       />
 
-      <Flex justify="space-between" gap={20} mt={26}>
-        <Box w="60%">
+      <Flex
+        justify="space-between"
+        gap={20}
+        mt={26}
+        wrap={{ base: "wrap", lg: "nowrap" }}
+      >
+        <Box w={{ base: "100%", lg: "60%" }}>
           <Text fw={500} mb={10}>
             Все пользователи
           </Text>
@@ -73,7 +78,7 @@ export default function UsersSections() {
           />
         </Box>
 
-        <Box w="40%" h="200px">
+        <Box w={{ base: "100%", lg: "40%" }} h="200px">
           <Text fw={500} mb={10}>
             Статистика ролей пользователей
           </Text>
@@ -82,6 +87,7 @@ export default function UsersSections() {
             gap={10}
             style={{ border: "1px solid #CBCBCB" }}
             bdrs={10}
+            wrap={{ base: "wrap", lg: "nowrap" }}
           >
             <Flex direction="column" px={20} justify="center" gap={40}>
               {Colors.map((el, index) => (

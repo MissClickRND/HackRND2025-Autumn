@@ -7,6 +7,7 @@ import Login from "../../pages/Auth/Login/Login";
 import Register from "../../pages/Auth/Register/Register";
 import AdminPanel from "../../pages/Admin/AdminPanel.page";
 import Auth from "./Auth";
+import Projects from "../../pages/Projects/Projects.page";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
       {
         path: "/admin",
         element: <AdminPanel />,
+      },
+      {
+        path: "/projects",
+        element: <Projects />,
       },
     ],
   },

@@ -15,7 +15,7 @@ export default function AdminPanel() {
   };
 
   return (
-    <Box px={50} py={25} style={{ flexGrow: 1 }}>
+    <Box px={{ base: 10, md: 50 }} py={25} style={{ flexGrow: 1 }}>
       <Tabs variant="none" value={value} onChange={setValue}>
         <Text fz={20} fw="500" mb={18}>
           Админ-панель

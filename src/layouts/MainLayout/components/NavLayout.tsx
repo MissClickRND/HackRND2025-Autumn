@@ -70,6 +70,7 @@ export default function NavLayout() {
       gap={10}
       direction={"column"}
       p={10}
+      visibleFrom="sm"
     >
       <Center mb={10}>
         <Logo width={20} height={32} />
