@@ -7,7 +7,7 @@ import { navButtonTitleVar } from "../../../layouts/MainLayout/components/animat
 interface IProps {
   to: string;
   title: string;
-  icon: ReactElement<{color: string}>;
+  icon: ReactElement<{ color: string }>;
 }
 
 const NavButton: FC<IProps> = ({ to, title, icon }) => {
@@ -26,7 +26,10 @@ const NavButton: FC<IProps> = ({ to, title, icon }) => {
           c={to === location.pathname ? "white" : "black"}
           size={50}
         >
-          {React.isValidElement(icon) && React.cloneElement(icon, {color: to === location.pathname ? "white" : "black"})}
+          {React.isValidElement(icon) &&
+            React.cloneElement(icon, {
+              color: to === location.pathname ? "white" : "black",
+            })}
         </ActionIcon>
       </NavLink>
       <Center
@@ -37,13 +40,13 @@ const NavButton: FC<IProps> = ({ to, title, icon }) => {
           left: 80,
           borderRadius: ".5rem",
           pointerEvents: "none",
-          zIndex: 100,
+          zIndex: 1000,
         }}
         py={7}
         px={14}
         bg="var(--navbar-button-color)"
       >
-        <Typography>{title}</Typography>
+        <Typography style={{ textWrap: "nowrap" }}>{title}</Typography>
       </Center>
     </Flex>
   );

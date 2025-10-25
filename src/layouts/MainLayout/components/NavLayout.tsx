@@ -1,13 +1,11 @@
-import { ActionIcon, Button, Center, Flex } from "@mantine/core";
-// import apiClient from "../../../app/api/axiosInstance";
-// import { notifications } from "@mantine/notifications";
+import { Center, Flex } from "@mantine/core";
+
 import NavButton from "../../../widgets/navButton/ui/NavButton";
 import {
   IconChartDots,
   IconClipboardText,
   IconFileAnalytics,
   IconLayoutDashboard,
-  IconLogout,
 } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { navbarVar } from "./animations";
@@ -38,17 +36,23 @@ export default function NavLayout() {
 
   return (
     <Flex
-        component={motion.div}
-        variants={navbarVar}
-        initial="hide"
-        animate="show"
-        whileHover={"hover"}
-     direction={"column"} justify={"space-between"} p={10}>
-      <Flex
-        pt={20}
-        gap={10}
-        direction={"column"}
-      >
+      style={{
+        borderRight: "1px solid var(--mantine-color-gray-3)",
+        zIndex: 1000,
+      }}
+      component={motion.div}
+      variants={navbarVar}
+      initial="hide"
+      animate="show"
+      bg="white"
+      whileHover={"hover"}
+      direction={"column"}
+      justify={"space-between"}
+      p={10}
+      pos="fixed"
+      h="100vh"
+    >
+      <Flex pt={20} gap={10} direction={"column"}>
         <Center mb={10}>
           <Logo width={20} height={32} />
         </Center>
@@ -61,10 +65,10 @@ export default function NavLayout() {
           />
         ))}
       </Flex>
-        <Flex direction={"column"} gap={20}>
-          <Avatar />
-          <LogoutButton />
-        </Flex>
+      <Flex direction={"column"} gap={20}>
+        <Avatar />
+        <LogoutButton />
+      </Flex>
     </Flex>
   );
 }

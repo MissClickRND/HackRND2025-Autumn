@@ -146,7 +146,12 @@ export default function Projects() {
       <Text fz={20} fw="500" mb={18}>
         Проекты
       </Text>
-      <Paper radius={10} withBorder p={16} mb={20}>
+      <Paper
+        radius={10}
+        style={{ border: "1px solid var(--mantine-color-gray-3)" }}
+        p={16}
+        mb={20}
+      >
         <Flex w="100%" justify="space-between" align="center">
           <Text c="var(--subtitle)">
             {segment ? "Управление проектом" : "Список всех проектов"}
