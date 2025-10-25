@@ -1,6 +1,5 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainLayout from "../../layouts/MainLayout/MainLayout";
-import Main from "../../pages/Main/Main.page";
 import Error404 from "../../pages/Errors/Error404/Error404.page";
 import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
 import Login from "../../pages/Auth/Login/Login";
@@ -8,6 +7,7 @@ import Register from "../../pages/Auth/Register/Register";
 import AdminPanel from "../../pages/Admin/AdminPanel.page";
 import Auth from "./Auth";
 import Projects from "../../pages/Projects/Projects.page";
+import Dashboard from "../../pages/Dashboard/ui/Dashboard";
 
 const router = createBrowserRouter([
   {
@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Main />,
+        element: <Dashboard />,
       },
       {
         path: "/admin",
