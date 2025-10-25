@@ -1,13 +1,18 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 
 :root {
-  --main-color: #090979;
   --auth-bg: linear-gradient(
     314deg,
     rgba(2, 0, 36, 1) 0%,
     rgba(9, 9, 121, 1) 6%,
     rgba(0, 212, 255, 1) 100%
   );
+  --main-color: #4f2bcd;
+  --main-color-orange: #ff4f12;
+  --main-color-light-blue: #749fd6;
+  --navbar-button-color: #F3F5F7;
+  --main-color-lavander: #EXE8D2ED;
+  --white-gray: #efeef3;
 }
 
 * {
