@@ -23,6 +23,7 @@ const NavButton: FC<IProps> = ({ to, title, icon }) => {
               ? "var(--main-color)"
               : "var(--navbar-button-color)"
           }
+          c={to === location.pathname ? "white" : "black"}
           size={50}
         >
           {React.isValidElement(icon) && React.cloneElement(icon, {color: to === location.pathname ? "white" : "black"})}
@@ -36,7 +37,7 @@ const NavButton: FC<IProps> = ({ to, title, icon }) => {
           left: 80,
           borderRadius: ".5rem",
           pointerEvents: "none",
-          zIndex: 100
+          zIndex: 100,
         }}
         py={7}
         px={14}

@@ -10,4 +10,7 @@ export const endpoints = {
   ALL_USERS: "/users/all",
   EDIT_USER: "/users/update",
   ALL_COUNT: "/users/allCount",
+  ALL_PROJECTS: "/project/getAll",
+  PROJECT: "/project",
+  GUIDE: "/guide",
 };

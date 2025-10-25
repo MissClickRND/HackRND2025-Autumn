@@ -1,4 +1,4 @@
-import { Center, Flex } from "@mantine/core";
+import { ActionIcon, Button, Center, Flex } from "@mantine/core";
 // import apiClient from "../../../app/api/axiosInstance";
 // import { notifications } from "@mantine/notifications";
 import NavButton from "../../../widgets/navButton/ui/NavButton";
@@ -7,6 +7,7 @@ import {
   IconClipboardText,
   IconFileAnalytics,
   IconLayoutDashboard,
+  IconLogout,
 } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { navbarVar } from "./animations";
