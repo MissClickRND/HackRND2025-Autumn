@@ -1,23 +1,24 @@
 import { useState } from "react";
-import { NonVerifyUsers } from "../../model/api";
-import { useNotifications } from "../../../../shared/lib/hooks/useNotifications";
-import { NonVerifyUserResponse } from "../../model/types";
 
-export const useNonVerifyUser = () => {
+import { useNotifications } from "../../../../shared/lib/hooks/useNotifications";
+import { AllUsersResponse } from "../../model/types";
+import { AllUsers } from "../../model/api";
+
+export const useAllUsers = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [isError, setIsError] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
-  const [data, setData] = useState<[] | NonVerifyUserResponse[]>([]);
+  const [data, setData] = useState<[] | AllUsersResponse[]>([]);
 
   const { showError } = useNotifications();
 
-  const fetchNonVerifyUser = async () => {
+  const fetchAllUsers = async () => {
     try {
       setIsLoading(true);
       setIsError(false);
       setError(null);
 
-      const result = await NonVerifyUsers();
+      const result = await AllUsers();
       setData(result);
     } catch (err) {
       setIsError(true);
@@ -36,5 +37,5 @@ export const useNonVerifyUser = () => {
     }
   };
 
-  return { isLoading, data, isError, error, NonVerifyUser: fetchNonVerifyUser };
+  return { isLoading, data, isError, error, AllUsers: fetchAllUsers };
 };

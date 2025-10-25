@@ -15,7 +15,7 @@ export default function email() {
           Авторизуйтесь, чтобы продолжить
         </Text>
       </Box>
-      <LoginForm/>
+      <LoginForm />
     </Stack>
   );
 }

@@ -1,6 +1,10 @@
 import apiClient from "../../../app/api/axiosInstance";
 import { baseUrl, endpoints } from "../../../shared/api";
-import { IDeleteUserRequest, IVerifyUserRequest } from "./types";
+import {
+  EditUserRequest,
+  IDeleteUserRequest,
+  IVerifyUserRequest,
+} from "./types";
 
 export const NonVerifyUsers = async () => {
   const res = await apiClient.get(baseUrl + endpoints.NON_VERIFY_USERS);
@@ -22,5 +26,26 @@ export const DeleteUser = async (body: IDeleteUserRequest) => {
   });
   if (res.status !== 200 && res.status !== 201)
     throw new Error("Ошибка удаления пользователя");
+  return res.data;
+};
+
+export const AllUsers = async () => {
+  const res = await apiClient.get(baseUrl + endpoints.ALL_USERS);
+  if (res.status !== 200 && res.status !== 201)
+    throw new Error("Ошибка удаления пользователя");
+  return res.data;
+};
+
+export const EditUser = async (body: EditUserRequest) => {
+  const res = await apiClient.patch(baseUrl + endpoints.EDIT_USER, body);
+  if (res.status !== 200 && res.status !== 201)
+    throw new Error("Ошибка изменения пользователя");
+  return res.data;
+};
+
+export const CountUsers = async () => {
+  const res = await apiClient.get(baseUrl + endpoints.ALL_COUNT);
+  if (res.status !== 200 && res.status !== 201)
+    throw new Error("Ошибка получения графика");
   return res.data;
 };

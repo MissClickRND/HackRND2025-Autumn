@@ -1,5 +1,5 @@
 import { Box, Button, Center, Flex, Table } from "@mantine/core";
-import { NonVerifyUserData } from "../../../../../features/admin/model/types";
+import { NonVerifyUserResponse } from "../../../../../features/admin/model/types";
 import { roles } from "../../../../../entities/users/roles";
 import { useVerifyUser } from "../../../../../features/admin/lib/hooks/useVerifyUser";
 import { useDeleteUser } from "../../../../../features/admin/lib/hooks/useDeleteUser";
@@ -35,21 +35,21 @@ export default function NonVerifyUserTable({
   check,
   setCheck,
 }: {
-  data: NonVerifyUserData[];
+  data: NonVerifyUserResponse[] | [];
   check: boolean;
   setCheck: (check: boolean) => void;
 }) {
   const { verify } = useVerifyUser();
   const { deleted } = useDeleteUser();
 
-  const accept = (element: NonVerifyUserData) => {
+  const accept = (element: NonVerifyUserResponse) => {
     verify({
       userId: element.id,
       role: "User",
     });
     setCheck(!check);
   };
-  const reject = (element: NonVerifyUserData) => {
+  const reject = (element: NonVerifyUserResponse) => {
     deleted({ userId: element.id });
     setCheck(!check);
   };
@@ -64,7 +64,7 @@ export default function NonVerifyUserTable({
     </Table.Tr>
   );
 
-  const rows = data.map((element: NonVerifyUserData) => (
+  const rows = data.map((element: NonVerifyUserResponse) => (
     <Table.Tr key={element.id}>
       <Table.Td>{element.id}</Table.Td>
       <Table.Td>{element.name}</Table.Td>
@@ -88,7 +88,7 @@ export default function NonVerifyUserTable({
         </Table>
       </Table.ScrollContainer>
       {data.length === 0 && (
-        <Center py={20}>Пользователей на подтверждение не существуют</Center>
+        <Center py={20}>Пользователей на подтверждение нет</Center>
       )}
     </Box>
   );
