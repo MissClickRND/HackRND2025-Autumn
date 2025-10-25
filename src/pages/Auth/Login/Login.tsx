@@ -7,7 +7,6 @@ export default function email() {
       <Center>
         <Image src="/icons/MainLogo.svg" mb={80} w={300} />
       </Center>
-      <LoginForm/>
       <Box>
         <Text fz={24} fw={700}>
           Вход в аккаунт
@@ -16,6 +15,7 @@ export default function email() {
           Авторизуйтесь, чтобы продолжить
         </Text>
       </Box>
+      <LoginForm/>
     </Stack>
   );
 }

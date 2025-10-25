@@ -13,7 +13,6 @@ export default function Register() {
       <Center>
         <Image src="/icons/MainLogo.svg" mb={30} w={300} />
       </Center>
-      <RegisterForm/>
       <Box>
         <Text fz={24} fw={700}>
           Регистрация
@@ -23,6 +22,7 @@ export default function Register() {
         </Text>
       </Box>
 
+      <RegisterForm/>
       
     </Stack>
   );
