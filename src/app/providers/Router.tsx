@@ -5,8 +5,8 @@ import Error404 from "../../pages/Errors/Error404/Error404.page";
 import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
 import Login from "../../pages/Auth/Login/Login";
 import Register from "../../pages/Auth/Register/Register";
-import Auth from "./Auth";
 import AdminPanel from "../../pages/Admin/AdminPanel.page";
+import Auth from "./Auth";
 
 const router = createBrowserRouter([
   {

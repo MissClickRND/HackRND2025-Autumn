@@ -1,6 +1,7 @@
-import { Box, FloatingIndicator, Tabs } from "@mantine/core";
+import { Box, FloatingIndicator, Tabs, Text } from "@mantine/core";
 import { useState } from "react";
 import classes from "./classes/Slidebar.module.css";
+import UsersSections from "./components/UserSection/UsersSection";
 
 export default function AdminPanel() {
   const [rootRef, setRootRef] = useState<HTMLDivElement | null>(null);
@@ -12,9 +13,13 @@ export default function AdminPanel() {
     controlsRefs[val] = node;
     setControlsRefs(controlsRefs);
   };
+
   return (
-    <Box px={50} py={25}>
+    <Box px={50} py={25} style={{ flexGrow: 1 }}>
       <Tabs variant="none" value={value} onChange={setValue}>
+        <Text fz={20} fw="500" mb={18}>
+          Админ-панель
+        </Text>
         <Tabs.List ref={setRootRef} className={classes.list}>
           <Tabs.Tab
             value="users"
@@ -45,7 +50,9 @@ export default function AdminPanel() {
           />
         </Tabs.List>
 
-        <Tabs.Panel value="users">First tab content</Tabs.Panel>
+        <Tabs.Panel value="users">
+          <UsersSections />
+        </Tabs.Panel>
         <Tabs.Panel value="backups">Second tab content</Tabs.Panel>
         <Tabs.Panel value="guides">Third tab content</Tabs.Panel>
       </Tabs>

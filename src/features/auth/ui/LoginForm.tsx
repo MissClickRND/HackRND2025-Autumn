@@ -18,7 +18,7 @@ const LoginForm = () => {
   });
 
   const handleSubmit = () => {
-    login(form.values)
+    login(form.values);
   };
   return (
     <form onSubmit={form.onSubmit(handleSubmit)}>
@@ -39,7 +39,13 @@ const LoginForm = () => {
             {...form.getInputProps("password")}
           />
         </Input.Wrapper>
-        <Button loading={isLoading} type="submit" fullWidth size="md" color="var(--main-color)">
+        <Button
+          loading={isLoading}
+          type="submit"
+          fullWidth
+          size="md"
+          color="var(--main-color)"
+        >
           Войти
         </Button>
         <Flex gap={2} justify="center" align="center">

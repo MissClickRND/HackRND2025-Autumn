@@ -1,7 +1,5 @@
 .list {
   position: relative;
-  width: 400px;
-  gap: 30px;
   border-radius: 30px;
   background-color: #f3f3f4;
   margin-bottom: 26px;
@@ -21,6 +19,7 @@
 
 .tab {
   z-index: 1;
+  width: 33.33%;
   height: 50px;
   font-size: 14px;
   font-weight: 500;

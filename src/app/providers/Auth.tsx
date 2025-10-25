@@ -38,12 +38,16 @@ export default function Auth({ children }: { children: ReactNode }) {
       })
       .catch((err) => {
         console.error("Auth error:", err);
-        // Проверяем конкретно 404 ошибку "Пользователь не найден"
+        // Проверяем конкретно 401
         if (
-          err.response?.status === 404 ||
-          err.response?.data?.error === "Not Found"
+          err.response?.status === 401 ||
+          err.response?.data?.error === "Unauthorized"
         ) {
-          setError({ error: "Not Found", message: "Пользователь не найден" });
+          setError({
+            error: "unauthorized",
+            message: "Пользователь не зарегистрирован",
+          });
+          window.location.pathname = "/auth/login";
         } else {
           setError(err.response?.data || { error: "Network error" });
         }
