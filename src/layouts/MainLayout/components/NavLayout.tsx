@@ -7,6 +7,7 @@ const API = import.meta.env.VITE_API;
 export default function NavLayout() {
   const links = [
     { name: "Главная", link: "/" },
+    { name: "Админ", link: "/admin" },
     { name: "О нас", link: "/about" },
     { name: "Авторизация", link: "/auth/login" },
     { name: "Регистрация", link: "/auth/register" },
