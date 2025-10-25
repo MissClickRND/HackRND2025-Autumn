@@ -6,6 +6,7 @@ import AuthLayout from "../../layouts/AuthLayout/AuthLayout";
 import Login from "../../pages/Auth/Login/Login";
 import Register from "../../pages/Auth/Register/Register";
 import Auth from "./Auth";
+import AdminPanel from "../../pages/Admin/AdminPanel.page";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +20,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Main />,
+      },
+      {
+        path: "/admin",
+        element: <AdminPanel />,
       },
     ],
   },
