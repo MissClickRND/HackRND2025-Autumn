@@ -2,7 +2,13 @@ import { ActionIcon, Box, Center, Table } from "@mantine/core";
 import { projectTable } from "../../../entities/projects/projectTable";
 import { IconEye } from "@tabler/icons-react";
 
-export default function ProjectsTable({ data }: { data: projectTable[] }) {
+export default function ProjectsTable({
+  data,
+  handleOpenProject,
+}: {
+  data: projectTable[] | [];
+  handleOpenProject: (id: number) => void;
+}) {
   const ths = (
     <Table.Tr style={{ borderBottom: "1px solid #CBCBCB" }}>
       <Table.Th>Сегмент</Table.Th>
@@ -25,12 +31,16 @@ export default function ProjectsTable({ data }: { data: projectTable[] }) {
       <Table.Td>{element.organization}</Table.Td>
       <Table.Td>{element.project}</Table.Td>
       <Table.Td>{element.stage}</Table.Td>
-      <Table.Td>{element.age}</Table.Td>
+      <Table.Td>{element.implementationYear}</Table.Td>
       <Table.Td>{element.service}</Table.Td>
       <Table.Td>{element.manager}</Table.Td>
       <Table.Td>{element.amount}₽</Table.Td>
       <Table.Td>
-        <ActionIcon color="var(--subtitle)" variant="transparent">
+        <ActionIcon
+          onClick={() => handleOpenProject(element.id)}
+          color="var(--subtitle)"
+          variant="transparent"
+        >
           <IconEye />
         </ActionIcon>
       </Table.Td>

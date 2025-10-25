@@ -19,9 +19,10 @@ const NavButton: FC<IProps> = ({ to, title, icon }) => {
           style={{ pointerEvents: to === location.pathname ? "none" : "unset" }}
           color={
             to === location.pathname
-              ? "lightgray"
+              ? "var(--main-color)"
               : "var(--navbar-button-color)"
           }
+          c={to === location.pathname ? "white" : "black"}
           size={50}
         >
           {icon}

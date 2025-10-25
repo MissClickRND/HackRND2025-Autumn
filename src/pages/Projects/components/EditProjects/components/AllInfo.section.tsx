@@ -8,7 +8,13 @@ import {
   TextInput,
 } from "@mantine/core";
 
-export default function AllInfoSection({ form }: { form: any }) {
+export default function AllInfoSection({
+  form,
+  guides,
+}: {
+  form: any;
+  guides: any;
+}) {
   return (
     <Paper radius={10} withBorder p={16} mb={20}>
       {/* Первая строка: Название организации и ИНН */}
@@ -41,11 +47,7 @@ export default function AllInfoSection({ form }: { form: any }) {
         <Select
           label="Услуга"
           placeholder="Выберите услугу"
-          data={[
-            { value: "service1", label: "Услуга 1" },
-            { value: "service2", label: "Услуга 2" },
-            { value: "service3", label: "Услуга 3" },
-          ]}
+          data={[]}
           {...form.getInputProps("service")}
           required
         />

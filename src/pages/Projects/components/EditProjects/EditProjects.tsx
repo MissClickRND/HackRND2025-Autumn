@@ -1,12 +1,15 @@
 import { FloatingIndicator, Tabs } from "@mantine/core";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import classes from "../../classes/Slidebar.module.css";
 import AllInfoSection from "./components/AllInfo.section";
 import RevenueSection from "./components/Revenue.section";
 import ExpensesSection from "./components/ExpensesSection";
 import Additionally from "./components/Additionally.section";
+import { baseUrl } from "../../../../shared/api";
+import apiClient from "../../../../app/api/axiosInstance";
 
 export default function EditProjects({ form }: { form: any }) {
+  const [guides, setGuides] = useState({});
   const [rootRef, setRootRef] = useState<HTMLDivElement | null>(null);
   const [value, setValue] = useState<string | null>("allInfo");
   const [controlsRefs, setControlsRefs] = useState<
@@ -16,6 +19,10 @@ export default function EditProjects({ form }: { form: any }) {
     controlsRefs[val] = node;
     setControlsRefs(controlsRefs);
   };
+
+  useEffect(() => {
+    apiClient.get(`${baseUrl}/guide`).then((el) => setGuides(el.data));
+  }, []);
 
   return (
     <>
@@ -58,7 +65,7 @@ export default function EditProjects({ form }: { form: any }) {
         </Tabs.List>
 
         <Tabs.Panel value="allInfo">
-          <AllInfoSection form={form} />
+          <AllInfoSection form={form} guides={guides} />
         </Tabs.Panel>
         <Tabs.Panel value="revenue">
           <RevenueSection form={form} />

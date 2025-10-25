@@ -1,4 +1,4 @@
-export interface projectTable {
+export interface IProjectTableResponse {
   id: number;
   segment: string;
   INN: string;
@@ -9,4 +9,8 @@ export interface projectTable {
   service: string;
   manager: string;
   amount: number;
+}
+
+export interface IProject {
+  projectId: number;
 }
