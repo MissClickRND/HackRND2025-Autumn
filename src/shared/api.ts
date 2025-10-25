@@ -1,4 +1,4 @@
-export const baseUrl = import.meta.env.VITE_API;
+export const baseUrl = '';
 
 export const endpoints = {
   LOGIN: "/login",

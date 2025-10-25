@@ -2,8 +2,7 @@ import { ReactNode, useEffect, useState } from "react";
 import { Center, Loader } from "@mantine/core";
 import { useMeStore } from "../../entities/me/model/meStore";
 import Error403 from "../../pages/Errors/Error404/Error403.page";
-import axios from "axios";
-const API = import.meta.env.VITE_API;
+import apiClient from "../api/axiosInstance";
 
 export default function Auth({ children }: { children: ReactNode }) {
   const { setUserEmail, setUserRole, setUserName } = useMeStore();
@@ -12,10 +11,8 @@ export default function Auth({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     setLoading(true);
-    axios
-      .get(`${API}/users`, {
-        withCredentials: true,
-      })
+    apiClient
+      .get(`/users`)
       .then((res) => {
         const responseData = res.data;
 

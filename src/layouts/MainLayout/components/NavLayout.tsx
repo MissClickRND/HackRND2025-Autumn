@@ -16,20 +16,20 @@ import Logo from "./Logo";
 export default function NavLayout() {
   const links = [
     {
-      name: "Аналитика",
+      name: "Дашборд",
       link: "/",
       icon: <IconLayoutDashboard color="black" />,
     },
     {
-      name: "Админ панель",
-      link: "/admin",
-      icon: <IconClipboardText color="black" />,
-    },
-    { name: "Отчеты", link: "/reports", icon: <IconChartDots color="black" /> },
-    {
       name: "Проекты",
       link: "/projects",
       icon: <IconFileAnalytics color="black" />,
+    },
+    { name: "Отчеты", link: "/reports", icon: <IconChartDots color="black" /> },
+    {
+      name: "Админ панель",
+      link: "/admin",
+      icon: <IconClipboardText color="black" />,
     },
   ];
 

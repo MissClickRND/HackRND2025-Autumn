@@ -9,6 +9,7 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit"
   },
+  "proxy": "http://26.37.203.228:3001",
   "dependencies": {
     "@mantine/charts": "^8.3.5",
     "@mantine/core": "^8.3.5",
@@ -16,6 +17,7 @@
     "@mantine/hooks": "^8.3.5",
     "@mantine/notifications": "^8.3.5",
     "@tabler/icons-react": "^3.34.1",
+    "@types/node": "^24.9.1",
     "axios": "^1.12.2",
     "motion": "^12.23.24",
     "react": "^19.1.0",
