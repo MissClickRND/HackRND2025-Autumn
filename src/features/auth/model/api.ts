@@ -1,6 +1,7 @@
 import axios from "axios";
 import { ILoginRequest, IRegisterRequest } from "./types";
 import { baseUrl, endpoints } from "../../../shared/api";
+import apiClient from "../../../app/api/axiosInstance";
 
 export const login = async (body: ILoginRequest) => {
   const res = await axios.post("/api" + endpoints.LOGIN, body, {
@@ -19,3 +20,8 @@ export const register = async (body: IRegisterRequest) => {
   if (res.status !== 200 && res.status !== 201)
     throw new Error("Ошибка регистрации");
 };
+
+export const logout = async () => {
+  const res = await apiClient.post(baseUrl + endpoints.LOGOUT) 
+  if (res.status !== 200 && res.status !== 201) throw new Error("Ошибка выхода")
+}

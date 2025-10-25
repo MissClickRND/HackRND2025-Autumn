@@ -1,5 +1,5 @@
 import { ActionIcon, Center, Flex, Typography } from "@mantine/core";
-import { FC, ReactNode } from "react";
+import React, { FC, ReactElement } from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import { motion } from "motion/react";
 import { navButtonTitleVar } from "../../../layouts/MainLayout/components/animations";
@@ -7,11 +7,12 @@ import { navButtonTitleVar } from "../../../layouts/MainLayout/components/animat
 interface IProps {
   to: string;
   title: string;
-  icon: ReactNode;
+  icon: ReactElement<{color: string}>;
 }
 
 const NavButton: FC<IProps> = ({ to, title, icon }) => {
   const location = useLocation();
+
   return (
     <Flex align={"center"}>
       <NavLink style={{ color: "black" }} to={to}>
@@ -19,12 +20,12 @@ const NavButton: FC<IProps> = ({ to, title, icon }) => {
           style={{ pointerEvents: to === location.pathname ? "none" : "unset" }}
           color={
             to === location.pathname
-              ? "lightgray"
+              ? "var(--main-color)"
               : "var(--navbar-button-color)"
           }
           size={50}
         >
-          {icon}
+          {React.isValidElement(icon) && React.cloneElement(icon, {color: to === location.pathname ? "white" : "black"})}
         </ActionIcon>
       </NavLink>
       <Center
