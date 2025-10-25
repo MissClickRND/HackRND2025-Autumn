@@ -1,12 +1,12 @@
 import { ReactNode, useEffect, useState } from "react";
 import { Center, Loader } from "@mantine/core";
-import { useUserStore } from "../../entities/stores/userStore";
+import { useMeStore } from "../../entities/me/model/meStore";
 import Error403 from "../../pages/Errors/Error404/Error403.page";
 import axios from "axios";
 const API = import.meta.env.VITE_API;
 
 export default function Auth({ children }: { children: ReactNode }) {
-  const { setUserEmail, setUserRole, setUserName } = useUserStore();
+  const { setUserEmail, setUserRole, setUserName } = useMeStore();
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<any>(null);
 
