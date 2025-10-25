@@ -1,15 +1,19 @@
-import { Button, Flex } from "@mantine/core";
-import { NavLink } from "react-router-dom";
+import { Center, Flex } from "@mantine/core";
 import apiClient from "../../../app/api/axiosInstance";
 import { notifications } from "@mantine/notifications";
+import NavButton from "../../../widgets/navButton/ui/NavButton";
+import { IconChartDots, IconClipboardText, IconFileAnalytics, IconLayoutDashboard } from "@tabler/icons-react";
+import { motion } from "motion/react";
+import { navbarVar } from "./animations";
+import Logo from "./Logo";
 
 const API = import.meta.env.VITE_API;
 export default function NavLayout() {
   const links = [
-    { name: "Главная", link: "/" },
-    { name: "О нас", link: "/about" },
-    { name: "Авторизация", link: "/auth/login" },
-    { name: "Регистрация", link: "/auth/register" },
+    { name: "Аналитика", link: "/", icon: <IconLayoutDashboard color="black"/> },
+    { name: "Админ панель", link: "/admin", icon: <IconClipboardText color="black"/> },
+    { name: "Отчеты", link: "/reports", icon: <IconChartDots color="black"/> },
+    { name: "Проекты", link: "/projects", icon: <IconFileAnalytics color="black"/>}
   ];
 
   const logout = () => {
@@ -39,17 +43,13 @@ export default function NavLayout() {
   };
 
   return (
-    <Flex gap={40} p={20}>
+    <Flex component={motion.div} variants={navbarVar} initial="hide" animate="show" whileHover={"hover"} pt={20} gap={10} direction={'column'} p={10}>
+      <Center mb={10}>
+      <Logo width={20} height={32}/>
+      </Center>
       {links.map((el, index) => (
-        <NavLink to={el.link} key={index}>
-          {({ isActive }) => (
-            <Button bg={isActive ? "red" : "blue"}>{el.name}</Button>
-          )}
-        </NavLink>
+        <NavButton key={index + "-navButton"} to={el.link} title={el.name} icon={el.icon} />
       ))}
-      <Button onClick={logout} color="orange">
-        Выйти
-      </Button>
     </Flex>
   );
 }

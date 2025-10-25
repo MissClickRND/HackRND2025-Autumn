@@ -32,15 +32,15 @@ export default function Main() {
   };
 
   return (
-    <Box w="100vw" bg="var(--main-color)">
+    <Box w="100vw" bg="white">
       <Stack>
-        <Button onClick={test} m={15}>
+        {/* <Button onClick={test} m={15}>
           Тестовая кнопка
         </Button>
         <Text py={50} ta="center" fz={28} c="white">
           <IconHome />
           Главная страница сайта
-        </Text>
+        </Text> */}
       </Stack>
     </Box>
   );
