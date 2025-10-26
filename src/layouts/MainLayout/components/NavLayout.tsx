@@ -38,7 +38,7 @@ export default function NavLayout() {
     <Flex
       style={{
         borderRight: "1px solid var(--mantine-color-gray-3)",
-        zIndex: 1000,
+        zIndex: 100,
       }}
       component={motion.div}
       variants={navbarVar}
